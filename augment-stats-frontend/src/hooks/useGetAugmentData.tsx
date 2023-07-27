@@ -1,18 +1,33 @@
-// src/useSampleData.ts
-import { useEffect, useState } from "react";
-import { AugmentStat } from "../hooks/augmentStat";
-import { augmentData } from "../hooks/augmentStat";
+// hooks/useGetAugmentData.tsx
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const useGetAugmentData = (): AugmentStat[] => {
-  const [data, setData] = useState<AugmentStat[]>([]);
+export interface AugmentData {
+  name: string;
+  average_placement: number;
+  total_matches: number;
+}
+
+const useGetAugmentData = () => {
+  const [data, setData] = useState<AugmentData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    // Simulate an API or database call
-    // In this case, we'll use the sample data from the sampleData.ts file
-    setData(augmentData);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:5000/api/augments");
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        setIsError(true);
+        setIsLoading(false);
+      }
+    };
+    fetchData();
   }, []);
 
-  return data;
+  return { data, isLoading, isError };
 };
 
 export default useGetAugmentData;
