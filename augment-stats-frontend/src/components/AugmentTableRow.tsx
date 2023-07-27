@@ -44,7 +44,7 @@ const AugmentTableRow: React.FC<AugmentTableRowProps> = ({
   return (
     <TableRow className={classes.tableRow}>
       <TableCell>{augment.name}</TableCell>
-      <TableCell>{augment.average_placement}</TableCell>
+      <TableCell>{Number(augment.average_placement).toFixed(3)}</TableCell>
       <TableCell>{augment.total_matches}</TableCell>
     </TableRow>
   );
