@@ -16,7 +16,9 @@ const useGetAugmentData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/api/augments");
+        const response = await axios.get(
+          "https://rat-stats-gg-586803b502ce.herokuapp.com/api/augments"
+        );
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
