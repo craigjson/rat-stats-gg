@@ -18,7 +18,7 @@ const IndexPage: React.FC = () => {
   return (
     <Container maxWidth="md">
       <Typography variant="h1" component="h1" gutterBottom>
-        Rat Stats
+        Rat Stats xdd
       </Typography>
       <AugmentTable data={data} />
     </Container>
