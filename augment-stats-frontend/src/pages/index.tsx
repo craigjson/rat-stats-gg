@@ -21,7 +21,11 @@ const IndexPage: React.FC = () => {
         Rat Stats xdd
       </Typography>
       <Typography variant="h2" component="h2" gutterBottom>
-        Augment Placement stats for all NA/KR/EUW players in Masters+
+        Augment Placement stats for all NA/KR/EUW players in Masters+, over 200k
+        matches analyzed.
+      </Typography>
+      <Typography variant="body1" gutterBottom>
+        Stage by stage coming soon
       </Typography>
       <AugmentTable data={data} />
     </Container>
