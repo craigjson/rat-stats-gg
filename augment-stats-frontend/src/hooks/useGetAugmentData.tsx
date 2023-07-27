@@ -8,6 +8,8 @@ export interface AugmentData {
   total_matches: number;
 }
 
+const API_URL: string = process.env.API_URL?.toString() || "";
+
 const useGetAugmentData = () => {
   const [data, setData] = useState<AugmentData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,9 +18,7 @@ const useGetAugmentData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://rat-stats-gg-586803b502ce.herokuapp.com/api/augments"
-        );
+        const response = await axios.get(API_URL);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
